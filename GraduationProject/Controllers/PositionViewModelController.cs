@@ -26,12 +26,28 @@ namespace GraduationProject.Controllers
             }
         }
 
+        //[Route("PositionViewModel/GetPositionViewModelBySearch")]
+        //public IHttpActionResult GetPositionViewModelListBySearch(string name)
+        //{
+        //    try
+        //    {
+        //        List<PositionViewModel> PositionViewModelList = new PositionViewModelManager().GetPositionViewModelListBySearch(name);
+        //        return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
+        //    }
+        //}
+
         [Route("PositionViewModel/GetPositionViewModelBySearch")]
-        public IHttpActionResult GetPositionViewModelListBySearch(string name)
+        public IHttpActionResult GetPositionViewModelListBySearch(string name, int PageIndex, int pageSize)
         {
             try
             {
-                List<PositionViewModel> PositionViewModelList = new PositionViewModelManager().GetPositionViewModelListBySearch(name);
+                List<PositionViewModel> list = new PositionViewModelManager().GetPositionViewModelListBySearch(name);
+                List<PositionViewModel> PositionViewModelList = Helper.Paging.ListPaging<PositionViewModel>(list, PageIndex, pageSize);
                 return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
             }
             catch (Exception ex)
@@ -49,6 +65,22 @@ namespace GraduationProject.Controllers
             {
                 List<PositionViewModel> allList = new PositionViewModelManager().GetPositionViewModelList();
                 List<PositionViewModel> PositionViewModelList = Helper.Paging.ListPaging<PositionViewModel>(allList, PageIndex, pageSize);
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
+            }
+        }
+
+        [Route("PositionViewModel/GetPositionViewModelOrderByWorkingLife")]
+        public IHttpActionResult GetPositionViewModelOrderByWorkingLife(int PageIndex, int pageSize)
+        {
+            try
+            {
+                List<PositionViewModel> allList = new PositionViewModelManager().GetPositionViewModelList();
+                List<PositionViewModel> PositionViewModelList = Helper.Paging.ListPaging<PositionViewModel>(allList, PageIndex, pageSize).OrderBy(t=>t.workingLifeId).ToList();
                 return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
             }
             catch (Exception ex)
