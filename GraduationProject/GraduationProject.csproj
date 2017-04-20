@@ -102,6 +102,7 @@
     <Compile Include="Controllers\CompanyCateController.cs" />
     <Compile Include="Controllers\ConnectedStateController.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
+    <Compile Include="Controllers\ConnectionViewModelController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeViewModelController.cs" />
