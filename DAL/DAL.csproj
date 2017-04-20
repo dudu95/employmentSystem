@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentViewModelService.cs" />
     <Compile Include="ConnectionViewModelService.cs" />
     <Compile Include="EmployeeViewModelService.cs" />
     <Compile Include="EmployerViewModelService.cs" />

@@ -99,6 +99,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\CommentViewModelController.cs" />
     <Compile Include="Controllers\CompanyCateController.cs" />
     <Compile Include="Controllers\ConnectedStateController.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />

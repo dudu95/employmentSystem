@@ -32,11 +32,8 @@ namespace Model
         public String targetPosition { get; set; }
         // 
         public String employeeNote { get; set; }
-        // 
-        public String username { get; set; }
-        // 
-        public String password { get; set; }
-        public String name { get; set; }
+       
+        public String employerName { get; set; }
         // 
         public String site { get; set; }
         // 
@@ -52,7 +49,7 @@ namespace Model
         // 
         public String intro { get; set; }
         // 
-        public String note { get; set; }
+        public String employerNote { get; set; }
         // 
         public String logo { get; set; }
 
