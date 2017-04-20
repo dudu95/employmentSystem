@@ -32,7 +32,7 @@ namespace Model
         // 
         public String targetPosition { get; set; }
         // 
-        public String note { get; set; }
+        public String employeeNote { get; set; }
         // 
         public String employerName { get; set; }
         // 
