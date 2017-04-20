@@ -41,5 +41,21 @@ namespace GraduationProject.Controllers
                 return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
             }
         }
+
+        [Route("EmployeeViewModel/GetEmployeeViewModelByPaging")]
+        public IHttpActionResult GetEmployeeViewModelByPaging(int PageIndex, int pageSize)
+        {
+            try
+            {
+                List<EmployeeViewModel> allList = new EmployeeViewModelManager().GetEmployeeViewModelList();
+                List<EmployeeViewModel> EmployeeViewModelList = Helper.Paging.ListPaging<EmployeeViewModel>(allList, PageIndex, pageSize);
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", EmployeeViewModelList, EmployeeViewModelList.Count));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
+            }
+        }
     }
 }
