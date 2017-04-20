@@ -46,7 +46,6 @@
     <Compile Include="EmployerViewModelManager.cs" />
     <Compile Include="PositionViewModelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tb_AccountManager.cs" />
     <Compile Include="T_CommentManager.cs" />
     <Compile Include="T_CompanyCateManager.cs" />
     <Compile Include="T_ConnectedStateManager.cs" />

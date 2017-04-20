@@ -50,7 +50,6 @@
     <Compile Include="EmployerViewModelService.cs" />
     <Compile Include="PositionViewModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tb_AccountService.cs" />
     <Compile Include="T_CommentService.cs" />
     <Compile Include="T_CompanyCateService.cs" />
     <Compile Include="T_ConnectedStateService.cs" />
