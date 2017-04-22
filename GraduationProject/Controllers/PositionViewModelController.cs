@@ -26,20 +26,20 @@ namespace GraduationProject.Controllers
             }
         }
 
-        //[Route("PositionViewModel/GetPositionViewModelBySearch")]
-        //public IHttpActionResult GetPositionViewModelListBySearch(string name)
-        //{
-        //    try
-        //    {
-        //        List<PositionViewModel> PositionViewModelList = new PositionViewModelManager().GetPositionViewModelListBySearch(name);
-        //        return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
-        //    }
-        //}
+        [Route("PositionViewModel/GetPositionViewModelByPositionId")]
+        public IHttpActionResult GetPositionViewModelByPositionId(int positionId)
+        {
+            try
+            {
+                List<PositionViewModel> PositionViewModelList = new PositionViewModelManager().GetPositionViewModelByPositionId(positionId);
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
+            }
+            catch (Exception ex)
+            {
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
+            }
+            
+        }
 
         [Route("PositionViewModel/GetPositionViewModelBySearch")]
         public IHttpActionResult GetPositionViewModelListBySearch(string name, int PageIndex, int pageSize)

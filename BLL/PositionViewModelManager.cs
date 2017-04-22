@@ -23,6 +23,12 @@ namespace BLL
             string condition = "pp.position LIKE '%" + str + "%' or e.name LIKE '%" + str + "%' or e.city LIKE '%" + str + "%'";
             return new PositionViewModelService().GetPositionViewModelList(condition);
         }
+
+        public List<PositionViewModel> GetPositionViewModelByPositionId(int positionId)
+        {
+            string condition = "pp.positionId="+positionId;
+            return new PositionViewModelService().GetPositionViewModelList(condition);
+        }
       
     }
 }

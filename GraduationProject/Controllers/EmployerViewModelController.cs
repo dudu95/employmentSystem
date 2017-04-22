@@ -41,5 +41,20 @@ namespace GraduationProject.Controllers
                 return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
             }
         }
+
+        [Route("EmployerViewModel/GetEmployerViewModelListByEmployerId")]
+        public IHttpActionResult GetEmployerViewModelListByEmployerId(int employerId)
+        {
+            try
+            {
+                List<EmployerViewModel> EmployerViewModelList = new EmployerViewModelManager().GetEmployerViewModelListByEmployerId(employerId);
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", EmployerViewModelList, EmployerViewModelList.Count));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
+            }
+        }
     }
 }

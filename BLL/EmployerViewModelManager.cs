@@ -23,5 +23,10 @@ namespace BLL
             string condition = "e.name LIKE '%" + str + "%' or e.city LIKE '%" + str + "%' or inv.stateName LIKE '%" + str + "%'";
             return new EmployerViewModelService().GetEmployerViewModelList(condition);
         }
+        public List<EmployerViewModel> GetEmployerViewModelListByEmployerId(int employerId)
+        {
+            string condition = "e.employerId = "+employerId;
+            return new EmployerViewModelService().GetEmployerViewModelList(condition);
+        }
     }
 }
