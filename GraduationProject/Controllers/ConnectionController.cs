@@ -76,6 +76,32 @@ namespace GraduationProject.Controllers
 
         }
 
+        [Route("Connection/UpdateConnection")]
+        public IHttpActionResult UpdateConnection(dynamic query)
+        {
+            try
+            {
+                T_Connection Connection = new T_ConnectionManager().SelectSingleLine_RTModel(new T_Connection { connectedId = query.connectedId });
+                Connection.employeeId = query.employeeId;
+                Connection.employerId = query.employerId;
+                Connection.connectedStateId = query.connectedStateId;
+                bool isUpdate = new T_ConnectionManager().IsUpdate(Connection);
+                if (isUpdate)
+                {
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("update success", true));
+                }
+                else
+                {
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("update faild", false));
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 1));
+            }
+
+        }
+
         [Route("Connection/DeleteConnectionById")]
         [HttpPost, HttpDelete]//这里方法名称带Delete如果不配置这里允许post请求，那么必须使用delete请求方式
         public IHttpActionResult DeleteConnectionById(int id)
