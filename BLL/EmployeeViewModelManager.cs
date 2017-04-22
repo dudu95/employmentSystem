@@ -16,7 +16,7 @@ namespace BLL
         }
         public List<EmployeeViewModel> GetEmployeeViewModelListBySearch(string str)
         {
-            string condition = "em.targetPosition LIKE '%" + str + "%' or ed.educationName LIKE '%" + str + "%' or em.note LIKE '%" + str + "%'";
+            string condition = "em.targetPosition LIKE '%" + str + "%' or ed.educationName LIKE '%" + str + "%' or wo.workingLife LIKE '%" + str + "%'";
             return new EmployeeViewModelService().GetEmployeeViewModelList(condition);
         }
     }

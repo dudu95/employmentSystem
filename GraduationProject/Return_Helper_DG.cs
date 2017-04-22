@@ -14,6 +14,10 @@ namespace GraduationProject
         {
             return new { isSuccess = true, description = description, httpStatusCode = httpStatusCode, data = data, dataCount = dataCount};
         }
+        public static object Success_Desc_Data_DCount_allCount_HttpCode(string description, dynamic data = null, int dataCount = 0, int allCount = 0, HttpStatusCode httpStatusCode = HttpStatusCode.OK)
+        {
+            return new { isSuccess = true, description = description, httpStatusCode = httpStatusCode, data = data, dataCount = dataCount,allCount = allCount };
+        }
         public static object Error_EMsg_Ecode_Elevel_HttpCode(string errorMessage,int errorCode,int errorLevel=0, HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError)
         {
             return new { isSuccess = false,httpStatusCode = httpStatusCode,errorMessage = errorMessage, errorCode = errorCode, errorLevel = errorLevel };

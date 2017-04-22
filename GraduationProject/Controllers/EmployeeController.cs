@@ -41,6 +41,14 @@ namespace GraduationProject.Controllers
             return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("GetEmployeeById", Employee, 1));
         }
 
+        [Route("Employee/GetEmployeeByUsernameAndPassword")]
+        public IHttpActionResult GetEmployeeById(string username,string password)
+        {
+            T_EmployeeManager manager = new T_EmployeeManager();
+            T_Employee Employee = manager.SelectByUserNameAndPassword(username,password);
+            return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("GetEmployeeByUsernameAndPassword", Employee, 1));
+        }
+
         [Route("Employee/GetEmployeeByName")]
         public IHttpActionResult GetEmployeeByName(string name)
         {

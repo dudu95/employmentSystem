@@ -65,7 +65,7 @@ namespace GraduationProject.Controllers
             {
                 List<PositionViewModel> allList = new PositionViewModelManager().GetPositionViewModelList();
                 List<PositionViewModel> PositionViewModelList = Helper.Paging.ListPaging<PositionViewModel>(allList, PageIndex, pageSize);
-                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_allCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count,allList.Count));
             }
             catch (Exception ex)
             {

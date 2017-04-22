@@ -163,6 +163,23 @@ namespace DAL
 				return default(T);
 			}
 		}
+
+        public T SelectByUserNameAndPassword<T>(string username,string password)
+        {
+            try
+            {
+                string commandText = "SELECT TOP (1) * FROM T_Employee WHERE username=@username and password=@password";//这里需要按需求来确定需要查找的是哪个参数 因为要返回一行数据，所以搜索的条件值必须是唯一的，主键是最佳选择！
+                SqlParameter[] parms = new SqlParameter[]{
+				    new SqlParameter("@username",username),
+                    new SqlParameter("@password",password)
+				};
+                return SqlHelper_DG.ReturnModelByModels<T>(SqlHelper_DG.ExecuteReader(SqlHelper_DG.ConnString, commandText, CommandType.Text, parms));
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+        }
 		/// <summary>
 		/// Select List语句，返回查询的List结果集
 		/// </summary>
