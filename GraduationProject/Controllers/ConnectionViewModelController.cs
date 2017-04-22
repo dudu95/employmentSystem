@@ -55,5 +55,20 @@ namespace GraduationProject.Controllers
                 return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
             }
         }
+
+        [Route("ConnectionViewModel/GetConnectionViewModelListByConnectedStateId")]
+        public IHttpActionResult GetConnectionViewModelListByConnectedStateId(int connectedStateId)
+        {
+            try
+            {
+                List<ConnectionViewModel> ConnectionViewModelList = new ConnectionViewModelManager().GetConnectionViewModelListByConnectedStateId(connectedStateId);
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", ConnectionViewModelList, ConnectionViewModelList.Count));
+            }
+            catch (Exception ex)
+            {
+
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 0));
+            }
+        }
     }
 }

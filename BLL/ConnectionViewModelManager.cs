@@ -24,5 +24,10 @@ namespace BLL
             string condition = "and con.employerId = " + employerId;
             return new ConnectionViewModelService().GetConnectionViewModelList(condition);
         }
+        public List<ConnectionViewModel> GetConnectionViewModelListByConnectedStateId(int connectedStateId)
+        {
+            string condition = "and con.connectedStateId = " + connectedStateId;
+            return new ConnectionViewModelService().GetConnectionViewModelList(condition);
+        }
     }
 }
