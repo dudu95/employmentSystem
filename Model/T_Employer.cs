@@ -37,6 +37,8 @@ namespace Model
         private String _scale;		//
         private String _intro;		//
         private String _note;		//
+        private String _username;		//
+        private String _password;		//
 
         /// <summary>
         ///
@@ -125,6 +127,19 @@ namespace Model
         {
             set { _note = value; }
             get { return _note; }
+        }
+        public String username
+        {
+            set { _username = value; }
+            get { return _username; }
+        }
+        /// <summary>
+        ///
+        /// </summary>
+        public String password
+        {
+            set { _password = value; }
+            get { return _password; }
         }
     }
 }

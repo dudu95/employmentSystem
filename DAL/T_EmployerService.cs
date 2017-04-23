@@ -71,7 +71,7 @@ namespace DAL
         {
             try
             {
-                string commandText = "INSERT INTO T_Employer ( name,logo,site,companyCateId,investmentStateId,city,address,scale,intro,note) VALUES (@name,@logo,@site,@companyCateId,@investmentStateId,@city,@address,@scale,@intro,@note)";
+                string commandText = "INSERT INTO T_Employer ( name,logo,site,companyCateId,investmentStateId,city,address,scale,intro,note,username,password) VALUES (@name,@logo,@site,@companyCateId,@investmentStateId,@city,@address,@scale,@intro,@note,@username,@password)";
                 SqlParameter[] parms = new SqlParameter[]{
 				new SqlParameter("@name",T_EmployerObject.name),
 				new SqlParameter("@logo",T_EmployerObject.logo),
@@ -83,6 +83,8 @@ namespace DAL
 				new SqlParameter("@scale",T_EmployerObject.scale),
 				new SqlParameter("@intro",T_EmployerObject.intro),
 				new SqlParameter("@note",T_EmployerObject.note),
+                new SqlParameter("@username",T_EmployerObject.username),
+				new SqlParameter("@password",T_EmployerObject.password),
 				};
                 return SqlHelper_DG.ExecuteNonQuery(SqlHelper_DG.ConnString, commandText, CommandType.Text, parms) > 0 ? true : false;
             }
@@ -100,7 +102,7 @@ namespace DAL
         {
             try
             {
-                string commandText = "UPDATE T_Employer SET name=@name,logo=@logo,site=@site,companyCateId=@companyCateId,investmentStateId=@investmentStateId,city=@city,address=@address,scale=@scale,intro=@intro,note=@note WHERE employerId=@employerId";
+                string commandText = "UPDATE T_Employer SET name=@name,logo=@logo,site=@site,companyCateId=@companyCateId,investmentStateId=@investmentStateId,city=@city,address=@address,scale=@scale,intro=@intro,note=@note,@username,@password WHERE employerId=@employerId";
                 SqlParameter[] parms = new SqlParameter[]{
 					new SqlParameter("@employerId",T_EmployerObject.employerId),
 					new SqlParameter("@name",T_EmployerObject.name),
@@ -113,6 +115,8 @@ namespace DAL
 					new SqlParameter("@scale",T_EmployerObject.scale),
 					new SqlParameter("@intro",T_EmployerObject.intro),
 					new SqlParameter("@note",T_EmployerObject.note),
+                    new SqlParameter("@username",T_EmployerObject.username),
+				    new SqlParameter("@password",T_EmployerObject.password),
 				};
                 return SqlHelper_DG.ExecuteNonQuery(SqlHelper_DG.ConnString, commandText, CommandType.Text, parms) > 0 ? true : false;
             }
@@ -153,6 +157,23 @@ namespace DAL
                 string commandText = "SELECT TOP (1) * FROM T_Employer WHERE employerId=@employerId";//这里需要按需求来确定需要查找的是哪个参数 因为要返回一行数据，所以搜索的条件值必须是唯一的，主键是最佳选择！
                 SqlParameter[] parms = new SqlParameter[]{
 				new SqlParameter("@employerId",T_EmployerObject.employerId),
+				};
+                return SqlHelper_DG.ReturnModelByModels<T>(SqlHelper_DG.ExecuteReader(SqlHelper_DG.ConnString, commandText, CommandType.Text, parms));
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+        }
+
+        public T SelectByUserNameAndPassword<T>(string username, string password)
+        {
+            try
+            {
+                string commandText = "SELECT TOP (1) * FROM T_Employer WHERE username=@username and password=@password";//这里需要按需求来确定需要查找的是哪个参数 因为要返回一行数据，所以搜索的条件值必须是唯一的，主键是最佳选择！
+                SqlParameter[] parms = new SqlParameter[]{
+				    new SqlParameter("@username",username),
+                    new SqlParameter("@password",password)
 				};
                 return SqlHelper_DG.ReturnModelByModels<T>(SqlHelper_DG.ExecuteReader(SqlHelper_DG.ConnString, commandText, CommandType.Text, parms));
             }

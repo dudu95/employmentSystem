@@ -53,6 +53,10 @@ namespace BLL
         {
             return new T_EmployerService().SelectSingleLine_RTModel<T_Employer>(T_EmployerObject);
         }
+        public T_Employer SelectByUserNameAndPassword(string username, string password)
+        {
+            return new T_EmployerService().SelectByUserNameAndPassword<T_Employer>(username, password);
+        }
         //获取到符合条件的所有值的业务--返回List T
         public List<T_Employer> SelectALL()
         {

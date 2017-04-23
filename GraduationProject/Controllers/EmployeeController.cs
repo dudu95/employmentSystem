@@ -42,7 +42,7 @@ namespace GraduationProject.Controllers
         }
 
         [Route("Employee/GetEmployeeByUsernameAndPassword")]
-        public IHttpActionResult GetEmployeeById(string username,string password)
+        public IHttpActionResult GetEmployeeByUsernameAndPassword(string username, string password)
         {
             T_EmployeeManager manager = new T_EmployeeManager();
             T_Employee Employee = manager.SelectByUserNameAndPassword(username,password);
