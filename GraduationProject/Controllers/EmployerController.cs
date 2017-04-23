@@ -73,6 +73,8 @@ namespace GraduationProject.Controllers
                 employer.scale = query.scale;
                 employer.intro = query.intro;
                 employer.note = query.note;
+                employer.username = query.username;
+                employer.password = query.password;
                 bool isAdd = new T_EmployerManager().IsInsert(employer);
                 if (isAdd)
                 {
@@ -81,6 +83,41 @@ namespace GraduationProject.Controllers
                 else
                 {
                     return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("add faild", false));
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 1));
+            }
+        }
+
+        [Route("Employer/UpdateEmployer")]
+        public IHttpActionResult UpdateEmployer(dynamic query)
+        {
+            try
+            {
+                T_Employer employer = new T_Employer();
+                employer.employerId = query.employerId;
+                employer.name = query.name;
+                employer.logo = query.logo;
+                employer.site = query.site;
+                employer.companyCateId = query.companyCateId;
+                employer.investmentStateId = query.investmentStateId;
+                employer.city = query.city;
+                employer.address = query.address;
+                employer.scale = query.scale;
+                employer.intro = query.intro;
+                employer.note = query.note;
+                employer.username = query.username;
+                employer.password = query.password;
+                bool isUpdate = new T_EmployerManager().IsUpdate(employer);
+                if (isUpdate)
+                {
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("update success", true));
+                }
+                else
+                {
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("update faild", false));
                 }
             }
             catch (Exception ex)
