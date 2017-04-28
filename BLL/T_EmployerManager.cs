@@ -67,10 +67,10 @@ namespace BLL
             return new T_EmployerService().SelectByCompanyCateId<T_Employer>(T_EmployerObject);//这里补充返回Model的条件，为空默认所有数据
         }
         //分页获取到符合条件的所有值的业务，一般配合返回总数的方法使用显示总页数！--返回List T
-        public List<T_Employer> SelectALLPaginByRowNumber(int PageSize, int PageNumber, string DataOrderBy)
+        public List<T_Employer> SelectALLPaginByRowNumber(int PageSize, int PageNumber)
         {
             string where = " 1=1 ";//判断条件语句可以自由发挥,默认返回全部 必须写安全的sql语句，防止数据注入!!!
-            return new T_EmployerService().SelectALLPaginByRowNumber<T_Employer>(PageSize, PageNumber, DataOrderBy, where);
+            return new T_EmployerService().SelectALLPaginByRowNumber<T_Employer>(PageSize, PageNumber, where);
         }
     }
 }

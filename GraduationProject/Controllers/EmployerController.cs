@@ -27,10 +27,11 @@ namespace GraduationProject.Controllers
         }
 
         [Route("Employer/GetEmployerPaging")]
-        public IHttpActionResult GetEmployerPaging(int PageSize, int PageNumber, string DataOrderBy)
+        public IHttpActionResult GetEmployerPaging(int PageSize, int PageIndex)
         {
-            List<T_Employer> EmployerList = new T_EmployerManager().SelectALLPaginByRowNumber(PageSize, PageNumber, DataOrderBy);
-            return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account list paging", EmployerList, EmployerList.Count));
+            List<T_Employer> allList = new T_EmployerManager().SelectALL();
+            List<T_Employer> EmployerList = new T_EmployerManager().SelectALLPaginByRowNumber(PageSize, PageIndex);
+            return Json(Return_Helper_DG.Success_Desc_Data_DCount_allCount_HttpCode("the account list paging", EmployerList, EmployerList.Count,allList.Count));
         }
 
         [Route("Employer/GetEmployerById")]

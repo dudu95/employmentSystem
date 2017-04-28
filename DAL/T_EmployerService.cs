@@ -222,12 +222,12 @@ namespace DAL
         /// <param name="DataOrderBy">object表中按这个字段顺序排序,可以是任意字段,可以加修饰符如DESC</param>
         /// <param name="safeSqlCondition">所有集合中先找出符合这个条件的结果再进行分页处理 查询的条件,从BLL层传来的安全的sql语句</param>
         /// <returns></returns>
-        public List<T> SelectALLPaginByRowNumber<T>(int PageSize, int PageNumber, string DataOrderBy, string safeSqlCondition = "1=1")
+        public List<T> SelectALLPaginByRowNumber<T>(int PageSize, int PageNumber, string safeSqlCondition = "1=1")
         {
             try
             {
                 StringBuilder commandText = new StringBuilder();
-                commandText.Append("SELECT TOP " + PageSize + " * FROM (SELECT ROW_NUMBER() OVER (ORDER BY " + DataOrderBy + ") AS RowNumber,* FROM T_Employer ");
+                commandText.Append("SELECT TOP " + PageSize + " * FROM (SELECT ROW_NUMBER() OVER (ORDER BY employerId) AS RowNumber,* FROM T_Employer ");
                 commandText.Append(" WHERE " + safeSqlCondition + " ");//这里修改条件语句
                 commandText.Append(" ) AS T  WHERE RowNumber > (" + PageSize + "*(" + PageNumber + "-1))");
                 return SqlHelper_DG.ReturnListByModels<T>(SqlHelper_DG.ExecuteDataSet(SqlHelper_DG.ConnString, commandText.ToString()));

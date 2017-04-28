@@ -50,6 +50,14 @@ namespace GraduationProject.Controllers
             return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("GetConnectionByEmployerId", ConnectionList, ConnectionList.Count));
         }
 
+        [Route("Connection/IsExistWhereFeild")]
+        public IHttpActionResult IsExistWhereFeild(int employeeId,int employerId)
+        {
+            T_ConnectionManager manager = new T_ConnectionManager();
+            Boolean isExist = manager.IsExistWhereFeild(new T_Connection() { employeeId = employeeId, employerId = employerId });
+            return Json( new { isExist = isExist } );
+        }
+
         [Route("Connection/AddConnection")]
         public IHttpActionResult AddConnection(dynamic query)
         {

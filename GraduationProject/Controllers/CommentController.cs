@@ -61,7 +61,7 @@ namespace GraduationProject.Controllers
                 bool isAdd = new T_CommentManager().IsInsert(Comment);
                 if (isAdd)
                 {
-                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("add success", true));
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("add success",Comment));
                 }
                 else
                 {

@@ -51,9 +51,10 @@ namespace DAL
 		{
 			try
 			{
-                string commandText = "select count(0) from T_Connection WHERE connectedId=@connectedId";
+                string commandText = "select count(0) from T_Connection WHERE employeeId=@employeeId and employerId=@employerId";
 				SqlParameter[] parms = new SqlParameter[]{
-				new SqlParameter("@connectedId",T_ConnectionObject.connectedId),
+				new SqlParameter("@employeeId",T_ConnectionObject.employeeId),
+                new SqlParameter("@employerId",T_ConnectionObject.employerId),
 				};
 				return Convert.ToInt32(SqlHelper_DG.ExecuteScalar(SqlHelper_DG.ConnString, commandText,CommandType.Text,parms)) > 0 ? true : false;
 			}
