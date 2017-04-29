@@ -53,6 +53,10 @@ namespace BLL
 		{
 			return new T_ConnectionService().SelectSingleLine_RTModel<T_Connection>(T_ConnectionObject);
 		}
+        public T_Connection SelectByeeIdAnderId(T_Connection T_ConnectionObject)
+		{
+            return new T_ConnectionService().SelectByeeIdAnderId<T_Connection>(T_ConnectionObject);
+		}
 		//获取到符合条件的所有值的业务--返回List T
 		public List<T_Connection> SelectALL()
 		{

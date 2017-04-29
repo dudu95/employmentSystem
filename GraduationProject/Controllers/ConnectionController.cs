@@ -51,13 +51,21 @@ namespace GraduationProject.Controllers
         }
 
         [Route("Connection/IsExistWhereFeild")]
+        [HttpGet]
         public IHttpActionResult IsExistWhereFeild(int employeeId,int employerId)
         {
             T_ConnectionManager manager = new T_ConnectionManager();
             Boolean isExist = manager.IsExistWhereFeild(new T_Connection() { employeeId = employeeId, employerId = employerId });
             return Json( new { isExist = isExist } );
         }
-
+        [Route("Connection/SelectByeeIdAnderId")]
+        public IHttpActionResult SelectByeeIdAnderId(int employeeId, int employerId)
+        {
+            T_ConnectionManager manager = new T_ConnectionManager();
+            T_Connection Connection = manager.SelectByeeIdAnderId(new T_Connection() { employeeId = employeeId, employerId = employerId });
+            return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("SelectByeeIdAnderId", Connection, 1));
+        }
+        
         [Route("Connection/AddConnection")]
         public IHttpActionResult AddConnection(dynamic query)
         {

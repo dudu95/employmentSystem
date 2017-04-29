@@ -148,6 +148,22 @@ namespace DAL
 				return default(T);
 			}
 		}
+        public T SelectByeeIdAnderId<T>(T_Connection T_ConnectionObject)
+        {
+            try
+            {
+                string commandText = "SELECT TOP (1) * FROM T_Connection WHERE employeeId=@employeeId and employerId=@employerId";//这里需要按需求来确定需要查找的是哪个参数 因为要返回一行数据，所以搜索的条件值必须是唯一的，主键是最佳选择！
+                SqlParameter[] parms = new SqlParameter[]{
+				new SqlParameter("@employeeId",T_ConnectionObject.employeeId),
+                new SqlParameter("@employerId",T_ConnectionObject.employerId)
+				};
+                return SqlHelper_DG.ReturnModelByModels<T>(SqlHelper_DG.ExecuteReader(SqlHelper_DG.ConnString, commandText, CommandType.Text, parms));
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+        }
 		/// <summary>
 		/// Select List语句，返回查询的List结果集
 		/// </summary>

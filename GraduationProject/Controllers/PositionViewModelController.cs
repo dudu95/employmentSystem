@@ -42,13 +42,13 @@ namespace GraduationProject.Controllers
         }
 
         [Route("PositionViewModel/GetPositionViewModelBySearch")]
-        public IHttpActionResult GetPositionViewModelListBySearch(string name, int PageIndex, int pageSize)
+        public IHttpActionResult GetPositionViewModelListBySearch(string name)
         {
             try
             {
                 List<PositionViewModel> list = new PositionViewModelManager().GetPositionViewModelListBySearch(name);
-                List<PositionViewModel> PositionViewModelList = Helper.Paging.ListPaging<PositionViewModel>(list, PageIndex, pageSize);
-                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", PositionViewModelList, PositionViewModelList.Count));
+                //List<PositionViewModel> PositionViewModelList = Helper.Paging.ListPaging<PositionViewModel>(list, PageIndex, pageSize);
+                return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("the account info ccount", list, list.Count));
             }
             catch (Exception ex)
             {
