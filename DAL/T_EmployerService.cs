@@ -102,7 +102,7 @@ namespace DAL
         {
             try
             {
-                string commandText = "UPDATE T_Employer SET name=@name,logo=@logo,site=@site,companyCateId=@companyCateId,investmentStateId=@investmentStateId,city=@city,address=@address,scale=@scale,intro=@intro,note=@note,@username,@password WHERE employerId=@employerId";
+                string commandText = "UPDATE T_Employer SET name=@name,logo=@logo,site=@site,companyCateId=@companyCateId,investmentStateId=@investmentStateId,city=@city,address=@address,scale=@scale,intro=@intro,note=@note,username=@username,username=@password WHERE employerId=@employerId";
                 SqlParameter[] parms = new SqlParameter[]{
 					new SqlParameter("@employerId",T_EmployerObject.employerId),
 					new SqlParameter("@name",T_EmployerObject.name),
