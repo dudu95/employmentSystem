@@ -79,6 +79,36 @@ namespace GraduationProject.Controllers
 
         }
 
+        [Route("PostPosition/UpdatePostPosition")]
+        public IHttpActionResult UpdatePostPosition(dynamic query)
+        {
+            try
+            {
+                T_PostPosition PostPosition = new T_PostPosition();
+                PostPosition.employerId = query.employerId;
+                PostPosition.position = query.position;
+                PostPosition.workingLifeId = query.workingLifeId;
+                PostPosition.educationId = query.educationId;
+                PostPosition.salary = query.salary;
+                PostPosition.advantage = query.advantage;
+                PostPosition.describe = query.describe;
+                bool isUpdate = new T_PostPositionManager().IsUpdate(PostPosition);
+                if (isUpdate)
+                {
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("update success", true));
+                }
+                else
+                {
+                    return Json(Return_Helper_DG.Success_Desc_Data_DCount_HttpCode("update faild", false));
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(Return_Helper_DG.Error_EMsg_Ecode_Elevel_HttpCode(ex.ToString(), 1));
+            }
+
+        }
+
         [Route("PostPosition/DeletePostPositionById")]
         [HttpPost, HttpDelete]//这里方法名称带Delete如果不配置这里允许post请求，那么必须使用delete请求方式
         public IHttpActionResult DeletePostPositionById(int id)
